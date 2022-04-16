@@ -1,6 +1,25 @@
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+const (
+	MoonCount  = 8
+	TarotCount = 78
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 func main() {
-	println("Based on Moon's " + MoonData[3].MoonPhase + " phase and " + MoonData[3].Visibility + " visibility...")
-	println("Seems like you got " + TarotData[17].Name + " which is of the " + TarotData[17].Arcana)
+	pickedMoonData := rand.Intn(MoonCount)
+	pickedTarotData := rand.Intn(TarotCount)
+	fmt.Println("Projecting point in time..")
+	println("Moon phase is " + MoonData[pickedMoonData].MoonPhase + " with " + MoonData[pickedMoonData].Visibility + " visibility...")
+	println("Picked " + TarotData[pickedTarotData].Name + " tarot card of the " + TarotData[pickedTarotData].Arcana + "...")
+
 }
