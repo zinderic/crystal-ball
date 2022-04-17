@@ -1,4 +1,4 @@
-package main
+package orb
 
 type Tarot struct {
 	Name   string

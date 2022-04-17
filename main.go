@@ -8,6 +8,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/zinderic/crystal-ball/orb"
 )
 
 const (
@@ -44,7 +46,7 @@ func main() {
 	pickedTarotData := rand.Intn(TarotCount)
 	fmt.Println("Projecting point in time..")
 	fmt.Println("Calibrating universal truth.. 42")
-	fmt.Println("Moon phase is " + MoonData[pickedMoonData].MoonPhase + " with " + MoonData[pickedMoonData].Visibility + " visibility...")
-	fmt.Println("Picked " + TarotData[pickedTarotData].Name + " tarot card of the " + TarotData[pickedTarotData].Arcana + "...")
+	fmt.Println("Moon phase is " + orb.MoonData[pickedMoonData].MoonPhase + " with " + orb.MoonData[pickedMoonData].Visibility + " visibility...")
+	fmt.Println("Picked " + orb.TarotData[pickedTarotData].Name + " tarot card of the " + orb.TarotData[pickedTarotData].Arcana + "...")
 
 }
