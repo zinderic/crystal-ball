@@ -1,12 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"math/rand"
-	"os"
-	"strings"
 	"time"
 
 	"github.com/zinderic/crystal-ball/orb"
@@ -21,23 +18,9 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-func readInput() (string, error) {
-	var reader = bufio.NewReader(os.Stdin)
-	fmt.Print("Enter your question: ")
-	_, err := fmt.Fscan(reader)
-	if err != nil {
-		return "", err
-	}
-	text, err := reader.ReadString('\n')
-	if err != nil {
-		return "", err
-	}
-	text = strings.TrimSuffix(text, "\n")
-	return text, nil
-}
-
 func main() {
-	input, err := readInput()
+	fmt.Println(orb.Blue + orb.Orb + orb.ResetColor)
+	input, err := orb.ReadInput()
 	if err != nil {
 		log.Fatalln(err)
 	}
