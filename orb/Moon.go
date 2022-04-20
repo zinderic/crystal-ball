@@ -1,6 +1,30 @@
 package orb
 
-type Moon struct {
+import (
+	"log"
+	"math/rand"
+	"os"
+	"text/template"
+)
+
+const MoonCount = 8
+
+func Moon() error {
+	count := rand.Intn(MoonCount)
+	template, err := template.ParseFiles("orb/Moon.txt")
+	// Capture any error
+	if err != nil {
+		log.Fatalln(err)
+	}
+	// Print out the template to std
+	err = template.Execute(os.Stdout, MoonData[count])
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type MoonStr struct {
 	MoonPhase            string
 	NorthernHemisphere   string
 	SouthernHemisphere   string
@@ -10,7 +34,7 @@ type Moon struct {
 	AverageMoonsetTime   string
 }
 
-var MoonData = []Moon{
+var MoonData = []MoonStr{
 	{
 		MoonPhase:            "New Moon",
 		NorthernHemisphere:   "disc completely in Sun's shadow (lit by earthshine only)",

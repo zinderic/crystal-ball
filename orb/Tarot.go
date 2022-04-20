@@ -1,13 +1,37 @@
 package orb
 
-type Tarot struct {
+import (
+	"log"
+	"math/rand"
+	"os"
+	"text/template"
+)
+
+const TarotCount = 78
+
+func Tarot() error {
+	count := rand.Intn(TarotCount)
+	template, err := template.ParseFiles("orb/Tarot.txt")
+	// Capture any error
+	if err != nil {
+		log.Fatalln(err)
+	}
+	// Print out the template to std
+	err = template.Execute(os.Stdout, TarotData[count])
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type TarotStr struct {
 	Name   string
 	Number string
 	Arcana string
 	Suit   string
 }
 
-var TarotData = []Tarot{
+var TarotData = []TarotStr{
 	{
 		Name:   "The Fool",
 		Number: "0",
@@ -117,7 +141,7 @@ var TarotData = []Tarot{
 		Suit:   "",
 	},
 	{
-		Name:   "The Moon",
+		Name:   "The MoonStr",
 		Number: "18",
 		Arcana: "Major Arcana",
 		Suit:   "",
