@@ -11,13 +11,13 @@ const MoonCount = 8
 
 func Moon() error {
 	count := rand.Intn(MoonCount)
-	template, err := template.ParseFiles("orb/Moon.txt")
+	tmpl, err := template.ParseFiles("orb/Moon.txt")
 	// Capture any error
 	if err != nil {
 		log.Fatalln(err)
 	}
 	// Print out the template to std
-	err = template.Execute(os.Stdout, MoonData[count])
+	err = tmpl.Execute(os.Stdout, MoonData[count])
 	if err != nil {
 		return err
 	}
