@@ -21,7 +21,7 @@ func main() {
 	}
 	fmt.Printf(">>> %s <<<\n", input)
 
-	fmt.Println("Projecting point in time..")
+	orb.Time()
 	fmt.Println("Calibrating universal truth.. 42")
 	err = orb.Moon()
 	if err != nil {
